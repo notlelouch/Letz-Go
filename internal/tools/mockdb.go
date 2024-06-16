@@ -4,68 +4,64 @@ import (
 	"time"
 )
 
-type mockDB struct {}
+type mockDB struct{}
 
 var mockLoginDetails = map[string]LoginDetails{
 	"elon": {
-		AuthToken: "ELON@123",
-		Username: "elon"
-	}
+		AuthToken: "123ABC",
+		Username:  "elon",
+	},
 	"aryan": {
-		AuthToken: "ARYAN@123",
-		Username: "aryan"
-	}
+		AuthToken: "456DEF",
+		Username:  "aryan",
+	},
 	"dogy": {
-		AuthToken: "DOGY@123",
-		Username: "dogy"
-	}
+		AuthToken: "789GHI",
+		Username:  "dogy",
+	},
 }
 
 var mockCoinDetails = map[string]CoinDetails{
 	"elon": {
-		Coins: 100,
-		Username: "elon"
-	}
+		Coins:    100,
+		Username: "elon",
+	},
 	"aryan": {
-		Coins: 10000,
-		Username: "aryan"
-	}
+		Coins:    200,
+		Username: "aryan",
+	},
 	"dogy": {
-		Coins: 1000,
-		Username: "dogy"
-	}
+		Coins:    300,
+		Username: "dogy",
+	},
 }
 
 func (d *mockDB) GetUserLoginDetails(username string) *LoginDetails {
 	// Simulate DB call
-	time.Sleep(time.Second * 3)
+	time.Sleep(time.Second * 1)
 
 	var clientData = LoginDetails{}
-	clientData, ok = mockLoginDetails[username]
-
+	clientData, ok := mockLoginDetails[username]
 	if !ok {
-		return null
+		return nil
 	}
 
 	return &clientData
-
 }
 
 func (d *mockDB) GetUserCoins(username string) *CoinDetails {
 	// Simulate DB call
-	time.Sleep(time.Second * 3)
+	time.Sleep(time.Second * 1)
 
 	var clientData = CoinDetails{}
-	clientData, ok = mockCoinDetails[username]
-
+	clientData, ok := mockCoinDetails[username]
 	if !ok {
-		return null
+		return nil
 	}
 
 	return &clientData
-
 }
 
 func (d *mockDB) SetupDatabase() error {
-	return nill
-} 
+	return nil
+}

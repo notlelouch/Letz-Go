@@ -21,6 +21,7 @@ type DatabaseInterface interface {
 }
 
 func NewDatabase() (*DatabaseInterface, error) {
+
 	var database DatabaseInterface = &mockDB{}
 
 	var err error = database.SetupDatabase()
@@ -30,5 +31,4 @@ func NewDatabase() (*DatabaseInterface, error) {
 	}
 
 	return &database, nil
-
 }

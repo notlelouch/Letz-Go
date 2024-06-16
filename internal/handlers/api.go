@@ -3,10 +3,11 @@ package handlers
 import (
 	"github.com/go-chi/chi"
 	chimiddle "github.com/go-chi/chi/middleware"
+	"github.com/notlelouch/Letz-Go/internal/middleware"
 )
 
 func Handler(r *chi.Mux) {
-	// Global Middleware
+	// Global middleware
 	r.Use(chimiddle.StripSlashes)
 
 	r.Route("/account", func(router chi.Router) {
@@ -15,6 +16,5 @@ func Handler(r *chi.Mux) {
 		router.Use(middleware.Authorization)
 
 		router.Get("/coins", GetCoinBalance)
-
 	})
 }
